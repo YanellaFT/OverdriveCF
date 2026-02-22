@@ -1,5 +1,6 @@
 x_speed = 0; // reset horizontal speed 
-y_speed += .5; // add gravity to y_speed
+y_speed += 0.5; // add gravity to y_speed
+loop = 1;
 
 if keyboard_check(vk_right) {  // if the right arrow key is pressed
     x_speed = walk_speed;  // set the horizontal speed to heidi's walk_speed
@@ -29,6 +30,14 @@ if keyboard_check(vk_right) {
 } else if keyboard_check(vk_left) {
     x_speed = -walk_speed; 
     image_xscale = 1; // reset her sprite so she faces left
+}
+
+if(place_meeting(x,y,oChest)){
+	room_restart();
+}
+
+if(room=WinScreen){
+	walk_speed = 0;
 }
 
 move_and_collide(x_speed, y_speed, oSolid);
